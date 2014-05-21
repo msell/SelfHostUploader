@@ -24,10 +24,10 @@ namespace SelfHostedAPI
          {
             throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.UnsupportedMediaType));
          }
-
+         
          // Create a stream provider for setting up output streams
-         CustomFormDataStreamProvider streamProvider = new CustomFormDataStreamProvider(ServerUploadFolder);
-
+         var streamProvider = new CustomFormDataStreamProvider(ServerUploadFolder);
+      
          // Read the MIME multipart asynchronously content using the stream provider we just created.
          await Request.Content.ReadAsMultipartAsync(streamProvider);
 
